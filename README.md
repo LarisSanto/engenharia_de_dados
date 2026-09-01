@@ -69,4 +69,5 @@ DBeaver
 * Ferramentas: GitHub Codespaces, DBeaver
 
 <br>
-#### OBS: Projeto desenvolvido como parte do aprendizado prático em Engenharia de Dados.
+
+### OBS: Projeto desenvolvido como parte do aprendizado prático em Engenharia de Dados.

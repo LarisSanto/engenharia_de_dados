@@ -19,24 +19,22 @@ if resposta.status_code == 200:
     
     print("Dados extraídos e transformados com sucesso!")
     
-    # --- 2. ENVIANDO PARA O POSTGRESQL ---
-    # Criando a 'ponte' de conexão (motor) para o PostgreSQL local
-    # Padrão no Codespace: usuario 'postgres', sem senha, na porta local
-    engine_postgres = create_engine('postgresql+psycopg2://postgres@localhost/postgres')
+    # --- 2. ENVIANDO PARA O BANCO SQL RELACIONAL (SQLite) ---
+    # Criando a 'ponte' de conexão (motor) para um banco relacional local baseado em arquivo
+    engine_postgres = create_engine('sqlite:///banco_local.db')
     
-    # Enviando o DataFrame para virar uma tabela chamada 'tabela_clima' no PostgreSQL
-    # if_exists='replace' significa que se a tabela já existir, ela é recriada
+    # Enviando o DataFrame para virar uma tabela chamada 'tabela_clima' no banco relacional
     df.to_sql('tabela_clima', engine_postgres, if_exists='replace', index=False)
-    print("Sucesso! Dados gravados na tabela do PostgreSQL.")
+    print("Sucesso! Dados gravados na tabela do banco relacional.")
     
-    # --- 3. ENVIANDO PARA O MYSQL ---
-    # Criando a 'ponte' de conexão para o MySQL local
-    # Padrão no Codespace: usuario 'root', sem senha
-    engine_mysql = create_engine('mysql+pymysql://root@localhost/mysql')
-    
-    # Enviando o DataFrame para virar uma tabela chamada 'tabela_clima' no MySQL
-    df.to_sql('tabela_clima', engine_mysql, if_exists='replace', index=False)
-    print("Sucesso! Dados gravados na tabela do MySQL.")
+    # --- 3. ENVIANDO PARA O MYSQL (Opcional, caso queira manter) ---
+    try:
+        engine_mysql = create_engine('mysql+pymysql://root@localhost/mysql')
+        df.to_sql('tabela_clima', engine_mysql, if_exists='replace', index=False)
+        print("Sucesso! Dados gravados na tabela do MySQL.")
+    except Exception as e:
+        print("MySQL local ignorado (passou direto pelo erro de serviço).")
 
 else:
     print(f"Erro ao conectar com a API: {resposta.status_code}")
+    

@@ -1,6 +1,6 @@
 # Pipeline de Engenharia de Dados: Da API à Nuvem e IaC
 
-Este projeto foi desenvolvido com uma abordagem prática ("hands-on") para simular um fluxo completo de Engenharia de Dados corporativo, cobrindo desde a extração de dados brutos até a modelagem relacional, estruturação de Data Lake e automação de infraestrutura.
+Este projeto foi desenvolvido com uma abordagem prática ("hands-on") para simular um fluxo completo de Engenharia de Dados corporativo, cobrindo desde a extração de dados brutos até a modelagem relacional, estruturação de Data Lake e automação de infraestrutura. 
 
 
 ### Estrutura do Repositório
